@@ -14,5 +14,14 @@ public class User{
     private String preferredLearningStyle ;
     private LocalDate createdAt;
 
-public User (Long id,String fullName,String email,String password,String role,String )
+public User (Long id,String fullName,String email,String password,String role,String preferredLearningStyle){
+    this.id=id;
 }
+
+public Long getId(){
+    return id;
+}
+public void setId(Long id){
+    this.id=id;
+}
+
