@@ -49,4 +49,25 @@ public void setemail(String email){
     this.email=email;
 }
 
-public String 
+public String getpassword(){
+    return password;
+}
+public void setpassword(String password){
+    this.password=password;
+
+}
+
+public String getrole(){
+    return role;
+}
+public void setrole(String role){
+    this.role=role;
+}
+
+public String getpreferredLearningStyle(){
+    return preferredLearningStyle;
+}
+public void setpreferredLearningStyle(String preferredLearningStyle){
+    this.preferredLearningStyle=preferredLearningStyle;
+}
+
