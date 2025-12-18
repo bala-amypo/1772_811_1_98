@@ -12,16 +12,18 @@ public class User{
     private String email;
     private String password;
     private String role;
-    private String preferredLearningStyle ;
+    private String preferredLearningStyle;
+    @PrePersist
     private LocalDate createdAt;
 
-public User (Long id,String fullName,String email,String password,String role="LEARNER",String preferredLearningStyle){
+public User (Long id,String fullName,String email,String password,String role="LEARNER",String preferredLearningStyle,LocalDate createdAt=LocalDate.now){
     this.id=id;
     this.fullName=fullName;
     this.email=email;
     this.password=password;
     this.role=role;
     this.preferredLearningStyle=preferredLearningStyle;
+    this.createdAt = createdAt;
 }
 
 public User(){
