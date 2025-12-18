@@ -20,7 +20,7 @@ public User (Long id,String fullName,String email,String password,String role="L
     this.email=email;
     this.password=password;
     this.role=role;
-    th
+    this.preferredLearningStyle=preferredLearningStyle;
 }
 
 public User(){
@@ -49,4 +49,4 @@ public void setemail(String email){
     this.email=email;
 }
 
-public 
+public String 
