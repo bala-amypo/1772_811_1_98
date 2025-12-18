@@ -18,6 +18,10 @@ public User (Long id,String fullName,String email,String password,String role,St
     this.id=id;
 }
 
+public User(){
+
+}
+
 public Long getId(){
     return id;
 }
@@ -25,3 +29,11 @@ public void setId(Long id){
     this.id=id;
 }
 
+public String getfullName(){
+    return fullName;
+}
+public void setfullName(String fullName){
+    this.fullName=fullName;
+}
+
+public String getemail
