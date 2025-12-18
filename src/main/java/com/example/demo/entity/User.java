@@ -1,4 +1,5 @@
-import java.util.date;
+import java.util.*;
+import jakarta.persistence.*;
 
 @Entity
 public class User{
@@ -71,3 +72,4 @@ public void setpreferredLearningStyle(String preferredLearningStyle){
     this.preferredLearningStyle=preferredLearningStyle;
 }
 
+}
