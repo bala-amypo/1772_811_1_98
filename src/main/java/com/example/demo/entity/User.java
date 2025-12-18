@@ -14,8 +14,13 @@ public class User{
     private String preferredLearningStyle ;
     private LocalDate createdAt;
 
-public User (Long id,String fullName,String email,String password,String role,String preferredLearningStyle){
+public User (Long id,String fullName,String email,String password,String role="LEARNER",String preferredLearningStyle){
     this.id=id;
+    this.fullName=fullName;
+    this.email=email;
+    this.password=password;
+    this.role=role;
+    th
 }
 
 public User(){
@@ -36,4 +41,12 @@ public void setfullName(String fullName){
     this.fullName=fullName;
 }
 
-public String getemail
+public String getemail(){
+    return email;
+}
+
+public void setemail(String email){
+    this.email=email;
+}
+
+public 
