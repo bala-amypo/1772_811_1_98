@@ -5,10 +5,11 @@ import jakarta.persistence.*;
 public class User{
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
     @Column(unique=true)
+    @NotBlank(")
     private String email;
     private String password;
     private String role;
