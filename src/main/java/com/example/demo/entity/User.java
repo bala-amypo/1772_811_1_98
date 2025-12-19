@@ -9,7 +9,8 @@ public class User{
     private Long id;
     private String fullName;
     @Column(unique=true)
-    @NotBlank(")
+    @NotBlank("Please fill the below")
+    @Email
     private String email;
     private String password;
     private String role;
