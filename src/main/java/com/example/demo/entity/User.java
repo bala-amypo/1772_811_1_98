@@ -1,79 +1,86 @@
-import java.util.*;
+package com.example.SpringPro.entity;
+
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 @Entity
-public class User{
-    
+@Table(name = "users")
+public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String fullName;
-    @Column(unique=true)
-    @NotBlank("Please fill the below")
+
+    @Column(unique = true, nullable = false)
     @Email
     private String email;
+
     private String password;
-    private String role;
+
+    private String role = "LEARNER";
+
     private String preferredLearningStyle;
-    @PrePersist
+
     private LocalDate createdAt;
 
-public User (Long id,String fullName,String email,String password,String role="LEARNER",String preferredLearningStyle,LocalDate createdAt=LocalDate.now){
-    this.id=id;
-    this.fullName=fullName;
-    this.email=email;
-    this.password=password;
-    this.role=role;
-    this.preferredLearningStyle=preferredLearningStyle;
-    this.createdAt = createdAt;
-}
+    @PrePersist
+    public void setCreatedAt() {
+        this.createdAt = LocalDate.now();
+    }
 
-public User(){
+    public User() {}
 
-}
+    // getters & setters
 
-public Long getId(){
-    return id;
-}
-public void setId(Long id){
-    this.id=id;
-}
+    public Long getId() {
+        return id;
+    }
 
-public String getfullName(){
-    return fullName;
-}
-public void setfullName(String fullName){
-    this.fullName=fullName;
-}
+    public String getFullName() {
+        return fullName;
+    }
 
-public String getemail(){
-    return email;
-}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-public void setemail(String email){
-    this.email=email;
-}
+    public String getEmail() {
+        return email;
+    }
 
-public String getpassword(){
-    return password;
-}
-public void setpassword(String password){
-    this.password=password;
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-}
+    public String getPassword() {
+        return password;
+    }
+ 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+ 
+    public String getRole() {
+        return role;
+    }
+ 
+    public void setRole(String role) {
+        this.role = role;
+    }
+ 
+    public String getPreferredLearningStyle() {
+        return preferredLearningStyle;
+    }
+ 
+    public void setPreferredLearningStyle(String preferredLearningStyle) {
+        this.preferredLearningStyle = preferredLearningStyle;
+    }
 
-public String getrole(){
-    return role;
-}
-public void setrole(String role){
-    this.role=role;
-}
-
-public String getpreferredLearningStyle(){
-    return preferredLearningStyle;
-}
-public void setpreferredLearningStyle(String preferredLearningStyle){
-    this.preferredLearningStyle=preferredLearningStyle;
-}
-
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
 }

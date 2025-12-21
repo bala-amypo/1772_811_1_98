@@ -1,6 +1,12 @@
+package com.example.SpringPro.repository;
 
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import com.example.SpringPro.entity.User;
 
-public class UserRepository extends JpaRepository<User,Integer>{
-
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+       Optional<User> findByEmail(String email);
 }
