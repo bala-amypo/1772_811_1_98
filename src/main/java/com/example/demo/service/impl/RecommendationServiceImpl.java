@@ -1,5 +1,4 @@
-package com.example.SpringPro.service.impl;
-
+package com.example.demo.service.impl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -7,11 +6,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.SpringPro.entity.Recommendation;
-import com.example.SpringPro.entity.User;
-import com.example.SpringPro.repository.RecommendationRepository;
-import com.example.SpringPro.repository.UserRepository;
-import com.example.SpringPro.service.RecommendationService;
+import com.example.demo.entity.Recommendation;
+import com.example.demo.entity.User;
+import com.example.demo.repository.RecommendationRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.RecommendationService;
 
 @Service
 public class RecommendationServiceImpl implements RecommendationService {

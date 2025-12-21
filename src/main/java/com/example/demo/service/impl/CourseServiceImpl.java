@@ -1,14 +1,14 @@
-package com.example.SpringPro.service.impl;
+package com.example.demo.service.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.SpringPro.entity.Course;
-import com.example.SpringPro.entity.User;
-import com.example.SpringPro.repository.CourseRepository;
-import com.example.SpringPro.repository.UserRepository;
-import com.example.SpringPro.service.CourseService;
+import com.example.demo.entity.Course;
+import com.example.demo.entity.User;
+import com.example.demo.repository.CourseRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.CourseService;
 
 @Service
 public class CourseServiceImpl implements CourseService {

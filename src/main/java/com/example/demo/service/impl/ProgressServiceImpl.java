@@ -1,16 +1,16 @@
-package com.example.SpringPro.service.impl;
+package com.example.demo.service.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.SpringPro.entity.MicroLesson;
-import com.example.SpringPro.entity.Progress;
-import com.example.SpringPro.entity.User;
-import com.example.SpringPro.repository.MicroLessonRepository;
-import com.example.SpringPro.repository.ProgressRepository;
-import com.example.SpringPro.repository.UserRepository;
-import com.example.SpringPro.service.ProgressService;
+import com.example.demo.entity.MicroLesson;
+import com.example.demo.entity.Progress;
+import com.example.demo.entity.User;
+import com.example.demo.repository.MicroLessonRepository;
+import com.example.demo.repository.ProgressRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.ProgressService;
 
 @Service
 public class ProgressServiceImpl implements ProgressService {
@@ -19,7 +19,9 @@ public class ProgressServiceImpl implements ProgressService {
     private final UserRepository userRepository;
     private final MicroLessonRepository lessonRepository;
 
-    public ProgressServiceImpl(ProgressRepository progressRepository,UserRepository userRepository,MicroLessonRepository lessonRepository) {
+    public ProgressServiceImpl(ProgressRepository progressRepository,
+                               UserRepository userRepository,
+                               MicroLessonRepository lessonRepository) {
 
         this.progressRepository = progressRepository;
         this.userRepository = userRepository;
@@ -35,7 +37,6 @@ public class ProgressServiceImpl implements ProgressService {
         MicroLesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new RuntimeException("Lesson not found"));
 
-        
         if (progress.getProgressPercent() < 0 || progress.getProgressPercent() > 100) {
             throw new RuntimeException("Progress percent must be between 0 and 100");
         }
@@ -46,9 +47,8 @@ public class ProgressServiceImpl implements ProgressService {
         }
 
         Progress existing = progressRepository
-                    .findByUserIdAndMicroLessonId(userId, lessonId)
-                    .orElse(null);
-
+                .findByUserIdAndMicroLessonId(userId, lessonId)
+                .orElse(null);
 
         if (existing != null) {
             existing.setStatus(progress.getStatus());

@@ -1,8 +1,8 @@
-package com.example.SpringPro.service;
+package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.SpringPro.entity.MicroLesson;
+import com.example.demo.entity.MicroLesson;
 
 public interface LessonService {
 
