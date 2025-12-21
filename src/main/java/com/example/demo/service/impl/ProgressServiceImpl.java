@@ -45,7 +45,10 @@ public class ProgressServiceImpl implements ProgressService {
             throw new RuntimeException("Completed status must have 100% progress");
         }
 
-        Progress existing = progressRepositor.findByUserIdAndMicroLessonId(userId, lessonId).orElse(null);
+        Progress existing = progressRepository
+                    .findByUserIdAndMicroLessonId(userId, lessonId)
+                    .orElse(null);
+
 
         if (existing != null) {
             existing.setStatus(progress.getStatus());
