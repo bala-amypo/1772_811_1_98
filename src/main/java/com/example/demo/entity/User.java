@@ -32,9 +32,10 @@ public class User {
         this.createdAt = LocalDate.now();
     }
 
-    public User() {}
+    public User() {
+        
+    }
 
-    // getters & setters
 
     public Long getId() {
         return id;
