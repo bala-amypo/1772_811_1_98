@@ -19,10 +19,7 @@ public class ProgressServiceImpl implements ProgressService {
     private final UserRepository userRepository;
     private final MicroLessonRepository lessonRepository;
 
-    public ProgressServiceImpl(
-            ProgressRepository progressRepository,
-            UserRepository userRepository,
-            MicroLessonRepository lessonRepository) {
+    public ProgressServiceImpl(ProgressRepository progressRepository,UserRepository userRepository,MicroLessonRepository lessonRepository) {
 
         this.progressRepository = progressRepository;
         this.userRepository = userRepository;
@@ -48,9 +45,7 @@ public class ProgressServiceImpl implements ProgressService {
             throw new RuntimeException("Completed status must have 100% progress");
         }
 
-        Progress existing = progressRepository
-                .findByUserIdAndMicroLessonId(userId, lessonId)
-                .orElse(null);
+        Progress existing = progressRepositor.findByUserIdAndMicroLessonId(userId, lessonId).orElse(null);
 
         if (existing != null) {
             existing.setStatus(progress.getStatus());
