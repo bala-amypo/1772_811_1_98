@@ -1,6 +1,6 @@
-package com.example.SpringPro.service;
+package com.example.demo.service;
 
-import com.example.SpringPro.entity.User;
+import com.example.demo.entity.User;
 
 public interface UserService {
 
@@ -12,3 +12,4 @@ public interface UserService {
 
     User findByEmail(String email);
 }
+    

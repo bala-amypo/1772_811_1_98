@@ -1,9 +1,9 @@
-package com.example.SpringPro.service;
+package com.example.demo.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.example.SpringPro.entity.Recommendation;
+import com.example.demo.entity.Recommendation;
 
 public interface RecommendationService {
 
