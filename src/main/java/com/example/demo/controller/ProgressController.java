@@ -1,11 +1,11 @@
-package com.example.SpringPro.controller;
+package com.example.demo.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.SpringPro.entity.Progress;
-import com.example.SpringPro.service.ProgressService;
+import com.example.demo.entity.Progress;
+import com.example.demo.service.ProgressService;
 
 @RestController
 @RequestMapping("/progress")
@@ -17,7 +17,6 @@ public class ProgressController {
         this.progressService = progressService;
     }
 
- 
     @PostMapping("/{lessonId}")
     public Progress recordProgress(
             @PathVariable Long lessonId,
@@ -27,7 +26,6 @@ public class ProgressController {
         return progressService.recordProgress(userId, lessonId, progress);
     }
 
-    
     @GetMapping("/lesson/{lessonId}")
     public Progress getProgress(
             @PathVariable Long lessonId,
@@ -36,7 +34,6 @@ public class ProgressController {
         return progressService.getProgress(userId, lessonId);
     }
 
-   
     @GetMapping("/user/{userId}")
     public List<Progress> getUserProgress(@PathVariable Long userId) {
         return progressService.getUserProgress(userId);

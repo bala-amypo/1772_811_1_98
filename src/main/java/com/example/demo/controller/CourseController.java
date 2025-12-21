@@ -1,11 +1,11 @@
-package com.example.SpringPro.controller;
+package com.example.demo.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.SpringPro.entity.Course;
-import com.example.SpringPro.service.CourseService;
+import com.example.demo.entity.Course;
+import com.example.demo.service.CourseService;
 
 @RestController
 @RequestMapping("/courses")

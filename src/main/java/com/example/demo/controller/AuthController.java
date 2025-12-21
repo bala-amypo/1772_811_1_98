@@ -1,9 +1,9 @@
-package com.example.SpringPro.controller;
+package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.SpringPro.entity.User;
-import com.example.SpringPro.service.UserService;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 
 @RestController
 @RequestMapping("/auth")

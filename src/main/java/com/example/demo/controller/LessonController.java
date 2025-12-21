@@ -1,11 +1,11 @@
-package com.example.SpringPro.controller;
+package com.example.demo.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.SpringPro.entity.MicroLesson;
-import com.example.SpringPro.service.LessonService;
+import com.example.demo.entity.MicroLesson;
+import com.example.demo.service.LessonService;
 
 @RestController
 @RequestMapping("/lessons")
@@ -17,7 +17,6 @@ public class LessonController {
         this.lessonService = lessonService;
     }
 
-    
     @PostMapping("/course/{courseId}")
     public MicroLesson createLesson(
             @PathVariable Long courseId,
@@ -25,7 +24,6 @@ public class LessonController {
 
         return lessonService.addLesson(courseId, lesson);
     }
-
 
     @PutMapping("/{lessonId}")
     public MicroLesson updateLesson(
@@ -35,13 +33,11 @@ public class LessonController {
         return lessonService.updateLesson(lessonId, lesson);
     }
 
-   
     @GetMapping("/{lessonId}")
     public MicroLesson getLessonById(@PathVariable Long lessonId) {
         return lessonService.getLesson(lessonId);
     }
 
-   
     @GetMapping("/search")
     public List<MicroLesson> searchLessons(
             @RequestParam String difficulty,
