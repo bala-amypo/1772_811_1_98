@@ -1,4 +1,4 @@
-package com.example.SpringPro.entity;
+package com.example.demo.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -21,9 +21,9 @@ public class Progress {
     @JoinColumn(name = "lesson_id", nullable = false)
     private MicroLesson microLesson;
 
-    private String status; 
+    private String status;
 
-    private int progressPercent; 
+    private int progressPercent;
     private BigDecimal score;
 
     private LocalDateTime lastAccessedAt;
@@ -34,8 +34,6 @@ public class Progress {
     }
 
     public Progress() {}
-
-  
 
     public Long getId() {
         return id;

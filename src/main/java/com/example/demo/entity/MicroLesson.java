@@ -1,4 +1,4 @@
-package com.example.SpringPro.entity;
+package com.example.demo.entity;
 
 import java.time.LocalDate;
 
@@ -34,9 +34,7 @@ public class MicroLesson {
     }
 
     public MicroLesson() {
-        
     }
-
 
     public Long getId() {
         return id;

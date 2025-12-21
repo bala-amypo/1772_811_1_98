@@ -1,12 +1,12 @@
-package com.example.SpringPro.controller;
+package com.example.demo.controller;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.SpringPro.entity.Recommendation;
-import com.example.SpringPro.service.RecommendationService;
+import com.example.demo.entity.Recommendation;
+import com.example.demo.service.RecommendationService;
 
 @RestController
 @RequestMapping("/recommendations")
@@ -18,7 +18,6 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-
     @PostMapping("/generate")
     public Recommendation generateRecommendation(
             @RequestParam Long userId,
@@ -27,12 +26,10 @@ public class RecommendationController {
         return recommendationService.generateRecommendation(userId, recommendation);
     }
 
-   
     @GetMapping("/latest")
     public Recommendation getLatest(@RequestParam Long userId) {
         return recommendationService.getLatestRecommendation(userId);
     }
-
 
     @GetMapping("/user/{userId}")
     public List<Recommendation> getByUser(

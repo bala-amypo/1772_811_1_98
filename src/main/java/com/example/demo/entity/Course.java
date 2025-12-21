@@ -1,4 +1,4 @@
-package com.example.SpringPro.entity;
+package com.example.demo.entity;
 
 import java.time.LocalDate;
 
@@ -32,13 +32,11 @@ public class Course {
 
     public Course() {}
 
-    // getters & setters
-
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {   // FIXED (no exception)
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package com.example.SpringPro.entity;
+package com.example.demo.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,7 +19,6 @@ public class Recommendation {
 
     private LocalDateTime generatedAt;
 
-   
     private String recommendedLessonIds;
 
     private String basisSnapshot;
@@ -32,8 +31,6 @@ public class Recommendation {
     }
 
     public Recommendation() {}
-
-
 
     public Long getId() {
         return id;

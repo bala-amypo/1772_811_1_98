@@ -1,4 +1,4 @@
-package com.example.SpringPro.entity;
+package com.example.demo.entity;
 
 import java.time.LocalDate;
 
@@ -33,9 +33,7 @@ public class User {
     }
 
     public User() {
-        
     }
-
 
     public Long getId() {
         return id;
