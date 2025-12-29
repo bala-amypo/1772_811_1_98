@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
-import java.time.LocalDate;
-import java.util.List;
-
+import com.example.demo.dto.RecommendationRequest;
+import com.example.demo.model.Recommendation;
+import com.example.demo.service.RecommendationService;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.Recommendation;
-import com.example.demo.service.RecommendationService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/recommendations")
@@ -18,25 +17,22 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @PostMapping("/generate")
-    public Recommendation generateRecommendation(
-            @RequestParam Long userId,
-            @RequestBody Recommendation recommendation) {
-
-        return recommendationService.generateRecommendation(userId, recommendation);
+    // existing
+    @PostMapping("/{userId}")
+    public Recommendation generate(@PathVariable Long userId,
+                                   @RequestBody RecommendationRequest request) {
+        return recommendationService.generateRecommendation(userId, request);
     }
 
-    @GetMapping("/latest")
-    public Recommendation getLatest(@RequestParam Long userId) {
+    // existing
+    @GetMapping("/latest/{userId}")
+    public Recommendation latest(@PathVariable Long userId) {
         return recommendationService.getLatestRecommendation(userId);
     }
 
+    // STEP-5 REQUIRED (added)
     @GetMapping("/user/{userId}")
-    public List<Recommendation> getByUser(
-            @PathVariable Long userId,
-            @RequestParam LocalDate from,
-            @RequestParam LocalDate to) {
-
-        return recommendationService.getRecommendations(userId, from, to);
+    public List<Recommendation> getUserRecommendations(@PathVariable Long userId) {
+        return recommendationService.getRecommendations(userId, null, null);
     }
 }

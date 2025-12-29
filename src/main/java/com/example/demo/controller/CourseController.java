@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
+import com.example.demo.model.Course;
+import com.example.demo.service.CourseService;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.Course;
-import com.example.demo.service.CourseService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/courses")
@@ -17,29 +16,29 @@ public class CourseController {
         this.courseService = courseService;
     }
 
+    // existing
     @PostMapping
-    public Course createCourse(
-            @RequestBody Course course,
-            @RequestParam Long instructorId) {
-
+    public Course createCourse(@RequestBody Course course,
+                               @RequestParam Long instructorId) {
         return courseService.createCourse(course, instructorId);
     }
 
-    @PutMapping("/{courseId}")
-    public Course updateCourse(
-            @PathVariable Long courseId,
-            @RequestBody Course course) {
+    // existing
+    @GetMapping("/{id}")
+    public Course getCourse(@PathVariable Long id) {
+        return courseService.getCourse(id);
+    }
 
+    // STEP-5 REQUIRED (added)
+    @PutMapping("/{courseId}")
+    public Course updateCourse(@PathVariable Long courseId,
+                               @RequestBody Course course) {
         return courseService.updateCourse(courseId, course);
     }
 
+    // STEP-5 REQUIRED (added)
     @GetMapping("/instructor/{instructorId}")
-    public List<Course> listInstructorCourses(@PathVariable Long instructorId) {
+    public List<Course> getInstructorCourses(@PathVariable Long instructorId) {
         return courseService.listCoursesByInstructor(instructorId);
-    }
-
-    @GetMapping("/{courseId}")
-    public Course getCourse(@PathVariable Long courseId) {
-        return courseService.getCourse(courseId);
     }
 }

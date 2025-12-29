@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
+import com.example.demo.model.MicroLesson;
+import com.example.demo.service.LessonService;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.MicroLesson;
-import com.example.demo.service.LessonService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/lessons")
@@ -17,32 +16,31 @@ public class LessonController {
         this.lessonService = lessonService;
     }
 
-    @PostMapping("/course/{courseId}")
-    public MicroLesson createLesson(
-            @PathVariable Long courseId,
-            @RequestBody MicroLesson lesson) {
-
+    // existing
+    @PostMapping("/{courseId}")
+    public MicroLesson addLesson(@PathVariable Long courseId,
+                                 @RequestBody MicroLesson lesson) {
         return lessonService.addLesson(courseId, lesson);
     }
 
-    @PutMapping("/{lessonId}")
-    public MicroLesson updateLesson(
-            @PathVariable Long lessonId,
-            @RequestBody MicroLesson lesson) {
+    // existing
+    @GetMapping("/search")
+    public List<MicroLesson> searchLessons(@RequestParam(required = false) String tags,
+                                           @RequestParam(required = false) String difficulty,
+                                           @RequestParam(required = false) String contentType) {
+        return lessonService.findLessonsByFilters(tags, difficulty, contentType);
+    }
 
+    // STEP-5 REQUIRED (added)
+    @PutMapping("/{lessonId}")
+    public MicroLesson updateLesson(@PathVariable Long lessonId,
+                                    @RequestBody MicroLesson lesson) {
         return lessonService.updateLesson(lessonId, lesson);
     }
 
+    // STEP-5 REQUIRED (added)
     @GetMapping("/{lessonId}")
-    public MicroLesson getLessonById(@PathVariable Long lessonId) {
+    public MicroLesson getLesson(@PathVariable Long lessonId) {
         return lessonService.getLesson(lessonId);
-    }
-
-    @GetMapping("/search")
-    public List<MicroLesson> searchLessons(
-            @RequestParam String difficulty,
-            @RequestParam String contentType) {
-
-        return lessonService.findLessonsByFilters(difficulty, contentType);
     }
 }

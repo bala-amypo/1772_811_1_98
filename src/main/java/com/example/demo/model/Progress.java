@@ -1,12 +1,16 @@
-package com.example.demo.entity;
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
-
 @Entity
-@Table(name = "progress")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Progress {
 
     @Id
@@ -14,72 +18,21 @@ public class Progress {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "lesson_id", nullable = false)
     private MicroLesson microLesson;
 
-    private String status;
+    private String status; // NOT_STARTED / IN_PROGRESS / COMPLETED
 
-    private int progressPercent;
-    private BigDecimal score;
+    private Integer progressPercent;
 
     private LocalDateTime lastAccessedAt;
 
+    private BigDecimal score;
+
     @PrePersist
-    public void setLastAccessedAt() {
+    public void prePersist() {
         this.lastAccessedAt = LocalDateTime.now();
-    }
-
-    public Progress() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public MicroLesson getMicroLesson() {
-        return microLesson;
-    }
-
-    public void setMicroLesson(MicroLesson microLesson) {
-        this.microLesson = microLesson;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getProgressPercent() {
-        return progressPercent;
-    }
-
-    public void setProgressPercent(int progressPercent) {
-        this.progressPercent = progressPercent;
-    }
-
-    public BigDecimal getScore() {
-        return score;
-    }
-
-    public void setScore(BigDecimal score) {
-        this.score = score;
-    }
-
-    public LocalDateTime getLastAccessedAt() {
-        return lastAccessedAt;
     }
 }

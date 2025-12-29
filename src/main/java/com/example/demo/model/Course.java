@@ -1,78 +1,39 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import java.time.LocalDate;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "course")
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = true)
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "instructor_id", nullable = false)
-    private User instructor;
 
     private String category;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    @JsonIgnoreProperties({"courses"}) // 🔥 FIX
+    private User instructor;
 
     @PrePersist
-    public void setCreatedAt() {
-        this.createdAt = LocalDate.now();
-    }
-
-    public Course() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(User instructor) {
-        this.instructor = instructor;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
     }
 }
