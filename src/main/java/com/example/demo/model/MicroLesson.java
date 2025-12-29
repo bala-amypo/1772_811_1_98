@@ -25,7 +25,7 @@ public class MicroLesson {
 
     private String contentType; 
 
-    private String difficulty; // BEGINNER / INTERMEDIATE / ADVANCED
+    private String difficulty; 
 
     private String tags;
 

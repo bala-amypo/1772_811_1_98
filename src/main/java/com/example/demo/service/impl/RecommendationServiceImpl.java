@@ -27,7 +27,7 @@ public class RecommendationServiceImpl implements RecommendationService {
     private final MicroLessonRepository microLessonRepository;
     private final ProgressRepository progressRepository;
 
-    // ✅ CONSTRUCTOR REQUIRED BY TESTS (DO NOT REMOVE)
+    
     public RecommendationServiceImpl(
             RecommendationRepository recommendationRepository,
             UserRepository userRepository
@@ -38,7 +38,6 @@ public class RecommendationServiceImpl implements RecommendationService {
         this.progressRepository = null;
     }
 
-    // ✅ CONSTRUCTOR REQUIRED BY TESTS (some tests expect 3 args)
     public RecommendationServiceImpl(
             RecommendationRepository recommendationRepository,
             UserRepository userRepository,
@@ -50,7 +49,6 @@ public class RecommendationServiceImpl implements RecommendationService {
         this.progressRepository = null;
     }
 
-    // ✅ CONSTRUCTOR USED BY SPRING BOOT (Swagger works)
     @Autowired
     public RecommendationServiceImpl(
             RecommendationRepository recommendationRepository,

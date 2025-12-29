@@ -22,7 +22,7 @@ public class Recommendation {
 
     private LocalDateTime generatedAt;
 
-    private String recommendedLessonIds; // CSV
+    private String recommendedLessonIds;
 
     private String basisSnapshot;
 

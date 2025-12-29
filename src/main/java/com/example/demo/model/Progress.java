@@ -23,8 +23,7 @@ public class Progress {
     @ManyToOne
     private MicroLesson microLesson;
 
-    private String status; // NOT_STARTED / IN_PROGRESS / COMPLETED
-
+    private String status; 
     private Integer progressPercent;
 
     private LocalDateTime lastAccessedAt;
