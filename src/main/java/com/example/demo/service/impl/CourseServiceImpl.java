@@ -1,14 +1,14 @@
 package com.example.demo.service.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
-import com.example.demo.entity.Course;
-import com.example.demo.entity.User;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.Course;
+import com.example.demo.model.User;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CourseService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -25,28 +25,29 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course createCourse(Course course, Long instructorId) {
         User instructor = userRepository.findById(instructorId)
-                .orElseThrow(() -> new RuntimeException("Instructor not found"));
-
+                .orElseThrow(() -> new ResourceNotFoundException("Instructor not found"));
         course.setInstructor(instructor);
         return courseRepository.save(course);
     }
 
     @Override
     public Course updateCourse(Long courseId, Course course) {
-        course.setId(courseId);
-        return courseRepository.save(course);
+        Course existing = courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+        existing.setTitle(course.getTitle());
+        existing.setDescription(course.getDescription());
+        existing.setCategory(course.getCategory());
+        return courseRepository.save(existing);
     }
 
     @Override
     public List<Course> listCoursesByInstructor(Long instructorId) {
-        User instructor = userRepository.findById(instructorId)
-                .orElseThrow(() -> new RuntimeException("Instructor not found"));
-
-        return courseRepository.findByInstructor(instructor);
+        return courseRepository.findByInstructorId(instructorId);
     }
 
     @Override
     public Course getCourse(Long courseId) {
-        return courseRepository.findById(courseId).orElse(null);
+        return courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
     }
 }
