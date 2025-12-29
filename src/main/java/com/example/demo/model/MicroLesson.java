@@ -23,7 +23,7 @@ public class MicroLesson {
 
     private Integer durationMinutes;
 
-    private String contentType; // VIDEO / TEXT
+    private String contentType; 
 
     private String difficulty; // BEGINNER / INTERMEDIATE / ADVANCED
 

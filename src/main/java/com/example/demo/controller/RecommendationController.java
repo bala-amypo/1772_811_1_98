@@ -17,20 +17,20 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    // existing
+   
     @PostMapping("/{userId}")
     public Recommendation generate(@PathVariable Long userId,
                                    @RequestBody RecommendationRequest request) {
         return recommendationService.generateRecommendation(userId, request);
     }
 
-    // existing
+  
     @GetMapping("/latest/{userId}")
     public Recommendation latest(@PathVariable Long userId) {
         return recommendationService.getLatestRecommendation(userId);
     }
 
-    // STEP-5 REQUIRED (added)
+    
     @GetMapping("/user/{userId}")
     public List<Recommendation> getUserRecommendations(@PathVariable Long userId) {
         return recommendationService.getRecommendations(userId, null, null);
